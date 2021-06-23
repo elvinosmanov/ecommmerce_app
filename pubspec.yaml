@@ -28,6 +28,7 @@ dependencies:
   list_tile_switch: ^1.0.0
   provider: ^5.0.0
   shared_preferences: ^2.0.6
+  fluttericon: ^2.0.0
 
 dev_dependencies:
   flutter_test:

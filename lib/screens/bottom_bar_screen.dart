@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 // ignore: import_of_legacy_library_into_null_safe
 
-import 'screens/cart_screen.dart';
-import 'screens/feed_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/search_screen.dart';
-import 'screens/user_screen.dart';
+import 'cart/cart.dart';
+import 'feed_screen.dart';
+import 'home_screen.dart';
+import 'search_screen.dart';
+import 'user_screen.dart';
 
 class BottomBarScreen extends StatefulWidget {
   @override
@@ -25,11 +25,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       {"page": HomeScreen(), "title": "Home", "icon": FeatherIcons.home},
       {"page": FeedScreen(), "title": "Feed", "icon": FeatherIcons.rss},
       {"page": SearchScreen(), "title": "Search", "icon": FeatherIcons.search},
-      {
-        "page": CartScreen(),
-        "title": "Cart",
-        "icon": FeatherIcons.shoppingCart
-      },
+      {"page": Cart(), "title": "Cart", "icon": FeatherIcons.shoppingBag},
       {"page": UserScreen(), "title": "User", "icon": FeatherIcons.user},
     ];
   }
@@ -37,10 +33,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(_pages[_selectedIndex]['title']),
-      // ),
-      body: _pages[4]['page'],
+      body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomAppBar(
         notchMargin: 5,
         elevation: 5.0,
