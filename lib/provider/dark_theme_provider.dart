@@ -1,4 +1,4 @@
-import 'package:ecommmerce_app/models/dark_theme_preferences.dart';
+import '../models/dark_theme_preferences.dart';
 import 'package:flutter/cupertino.dart';
 
 class DarkThemeProvider with ChangeNotifier {

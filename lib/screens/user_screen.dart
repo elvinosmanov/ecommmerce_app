@@ -1,5 +1,5 @@
-import 'package:ecommmerce_app/cosntants/colors.dart';
-import 'package:ecommmerce_app/provider/dark_theme_provider.dart';
+import '../cosntants/colors.dart';
+import '../provider/dark_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
@@ -86,8 +86,8 @@ class _UserScreenState extends State<UserScreen> {
                                       ],
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/avatar.png"),
+                                        image: NetworkImage(
+                                            "https://www.bluebridgewindowcleaning.co.uk/wp-content/uploads/2016/04/default-avatar.png"),
                                       ),
                                     ),
                                   ),
@@ -100,8 +100,8 @@ class _UserScreenState extends State<UserScreen> {
                             ),
                           ],
                         ),
-                        background: Image.asset(
-                          "assets/images/avatar.png",
+                        background: Image.network(
+                          "https://www.bluebridgewindowcleaning.co.uk/wp-content/uploads/2016/04/default-avatar.png",
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -116,10 +116,6 @@ class _UserScreenState extends State<UserScreen> {
                   children: [
                     userTitle("User Information"),
                     Divider(thickness: 1.0, color: Colors.grey),
-                    userListTile(
-                        'Email', 'elvinn.osmanov@gmail.com', 0, context),
-                    userListTile(
-                        'Email', 'elvinn.osmanov@gmail.com', 0, context),
                     userListTile(
                         'Email', 'elvinn.osmanov@gmail.com', 0, context),
                     userListTile('Phone number', '+994554261998', 1, context),
@@ -211,9 +207,12 @@ class _UserScreenState extends State<UserScreen> {
         transform: Matrix4.identity()..scale(scale),
         alignment: Alignment.center,
         child: FloatingActionButton(
+          backgroundColor: Colors.purple,
           heroTag: "btn1",
           onPressed: () {},
-          child: Icon(Icons.camera_alt_outlined),
+          child: Icon(
+            Icons.camera_alt_outlined,
+          ),
         ),
       ),
     );

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+
 // ignore: import_of_legacy_library_into_null_safe
 
-import 'cart/cart.dart';
+import 'cart.dart';
 import 'feed_screen.dart';
 import 'home_screen.dart';
 import 'search_screen.dart';
@@ -61,6 +62,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purple,
         onPressed: () {
           setState(() {
             _selectedIndex = 2;

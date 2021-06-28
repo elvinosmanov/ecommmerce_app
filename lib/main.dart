@@ -1,5 +1,5 @@
-import 'package:ecommmerce_app/cosntants/theme_data.dart';
-import 'package:ecommmerce_app/provider/dark_theme_provider.dart';
+import 'cosntants/theme_data.dart';
+import 'provider/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/bottom_bar_screen.dart';

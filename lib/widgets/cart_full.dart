@@ -1,5 +1,5 @@
-import 'package:ecommmerce_app/cosntants/colors.dart';
-import 'package:ecommmerce_app/provider/dark_theme_provider.dart';
+import '../../cosntants/colors.dart';
+import '../../provider/dark_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +15,7 @@ class CartFull extends StatelessWidget {
       height: 135.0,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Theme.of(context).backgroundColor,
+        color: Colors.blue[300],
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(12.0),
           bottomRight: Radius.circular(12.0),
