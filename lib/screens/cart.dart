@@ -1,5 +1,5 @@
-import 'package:ecommmerce_app/widgets/cart_empty.dart';
-import 'package:ecommmerce_app/widgets/cart_full.dart';
+import '../widgets/cart_empty.dart';
+import '../widgets/cart_full.dart';
 
 import '../cosntants/colors.dart';
 import 'package:flutter/material.dart';

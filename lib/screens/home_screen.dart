@@ -2,9 +2,9 @@ import 'package:backdrop/app_bar.dart';
 import 'package:backdrop/button.dart';
 import 'package:backdrop/scaffold.dart';
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
-import 'package:ecommmerce_app/cosntants/colors.dart';
-import 'package:ecommmerce_app/widgets/category.dart';
-import 'package:ecommmerce_app/widgets/popular_prodcuts.dart';
+import '../cosntants/colors.dart';
+import '../widgets/category.dart';
+import '../widgets/popular_prodcuts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
@@ -69,17 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
             carousel(),
             titleCategories(),
             categories(),
-            titlePopularBrands(),
+            titlePopular(title: "Popular Brands"),
             popularBrands(context),
-            Container(
-              width: double.infinity,
-              height: 280,
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return PopularProducts();
-                },
-              ),
-            )
+            titlePopular(title: "Popular Products"),
+            popularProducts(),
           ],
         ),
       ),
@@ -159,13 +152,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Padding titlePopularBrands() {
+  Padding titlePopular({required String title}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: <Widget>[
           Text(
-            'Popular Brands',
+            title,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
           ),
           Spacer(),
@@ -175,6 +168,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontSize: 15, fontWeight: FontWeight.w800, color: Colors.red),
           )
         ],
+      ),
+    );
+  }
+
+  Container popularProducts() {
+    return Container(
+      width: double.infinity,
+      height: 285,
+      margin: EdgeInsets.symmetric(horizontal: 3),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 8,
+        itemBuilder: (context, index) {
+          return PopularProducts();
+        },
       ),
     );
   }
