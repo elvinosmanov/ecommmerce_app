@@ -1,3 +1,5 @@
+import 'package:ecommmerce_app/inner_screens/brands_navigation_rail.dart';
+
 import 'cosntants/theme_data.dart';
 import 'provider/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +32,10 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             theme: Styles.themeData(themeData.darkTheme, context),
             title: 'Material App',
+            routes: {
+              "/home": (_) => BottomBarScreen(),
+              "/brands_navigation_rail": (_) => BrandsNavigationRail()
+            },
             home: BottomBarScreen(),
           );
         },

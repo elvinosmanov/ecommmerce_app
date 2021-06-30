@@ -2,6 +2,7 @@ import 'package:backdrop/app_bar.dart';
 import 'package:backdrop/button.dart';
 import 'package:backdrop/scaffold.dart';
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
+import 'package:ecommmerce_app/inner_screens/brands_navigation_rail.dart';
 import '../cosntants/colors.dart';
 import '../widgets/category.dart';
 import '../widgets/popular_prodcuts.dart';
@@ -104,9 +105,13 @@ class _HomeScreenState extends State<HomeScreen> {
       height: 210,
       width: MediaQuery.of(context).size.width * .95,
       child: Swiper(
+        onTap: (index) {
+          Navigator.pushNamed(context, BrandsNavigationRail.routeName,
+              arguments: index);
+        },
         itemCount: _listBrands.length,
         autoplay: true,
-        autoplayDelay: 1000,
+        autoplayDelay: 2000,
         curve: Curves.fastOutSlowIn,
         viewportFraction: 0.8,
         scale: 0.8,
