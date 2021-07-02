@@ -1,4 +1,4 @@
-import 'package:ecommmerce_app/inner_screens/brands_navigation_rail.dart';
+import 'inner_screens/brands_navigation_rail.dart';
 
 import 'cosntants/theme_data.dart';
 import 'provider/dark_theme_provider.dart';
