@@ -2,6 +2,7 @@ import '../widgets/feeds_products.dart';
 import 'package:flutter/material.dart';
 
 class FeedScreen extends StatelessWidget {
+  static const routeName = '/feeds';
   const FeedScreen({Key? key}) : super(key: key);
 
   @override

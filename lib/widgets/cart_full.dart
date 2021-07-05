@@ -12,7 +12,7 @@ class CartFull extends StatelessWidget {
     final darkTheme = Provider.of<DarkThemeProvider>(context).darkTheme;
     return Container(
       margin: EdgeInsets.all(10.0),
-      height: 135.0,
+      height: 140.0,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.blue[300],

@@ -1,6 +1,8 @@
 import 'package:backdrop/app_bar.dart';
 import 'package:backdrop/button.dart';
 import 'package:backdrop/scaffold.dart';
+import 'package:ecommmerce_app/cosntants/network_links.dart';
+import 'package:ecommmerce_app/widgets/back_layer.dart';
 import '../widgets/front_layer.dart';
 import '../cosntants/colors.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: CircleAvatar(
                   radius: 15.0,
                   backgroundImage: NetworkImage(
-                      "https://www.bluebridgewindowcleaning.co.uk/wp-content/uploads/2016/04/default-avatar.png"),
+                      NetworkLinks.avatar),
                 ))
           ],
           flexibleSpace: Container(
@@ -40,9 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        backLayer: Center(
-          child: Text("Back Layer"),
-        ),
+        backLayer: BackLayer(),
         frontLayer: FrontLayer());
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 
-import 'cart.dart';
+import 'cart_screen.dart';
 import 'feed_screen.dart';
 import 'home_screen.dart';
 import 'search_screen.dart';
@@ -26,7 +26,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       {"page": HomeScreen(), "title": "Home", "icon": FeatherIcons.home},
       {"page": FeedScreen(), "title": "Feed", "icon": FeatherIcons.rss},
       {"page": SearchScreen(), "title": "Search", "icon": FeatherIcons.search},
-      {"page": Cart(), "title": "Cart", "icon": FeatherIcons.shoppingBag},
+      {"page": CartScreen(), "title": "Cart", "icon": FeatherIcons.shoppingBag},
       {"page": UserScreen(), "title": "User", "icon": FeatherIcons.user},
     ];
   }

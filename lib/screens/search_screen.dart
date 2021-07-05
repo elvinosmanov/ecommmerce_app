@@ -1,4 +1,3 @@
-import '../inner_screens/brands_rail_widget.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {

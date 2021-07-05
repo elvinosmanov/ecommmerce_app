@@ -1,3 +1,5 @@
+import 'package:ecommmerce_app/cosntants/network_links.dart';
+
 import 'brands_rail_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -74,7 +76,7 @@ class _BrandsNavigationRailState extends State<BrandsNavigationRail> {
                               image: DecorationImage(
                                   fit: BoxFit.fill,
                                   image: NetworkImage(
-                                      "https://www.bluebridgewindowcleaning.co.uk/wp-content/uploads/2016/04/default-avatar.png")))),
+                                      NetworkLinks.avatar)))),
                       labelType: NavigationRailLabelType.all,
                       onDestinationSelected: (value) {
                         setState(() {

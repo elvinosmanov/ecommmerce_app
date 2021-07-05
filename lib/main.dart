@@ -1,3 +1,7 @@
+import 'package:ecommmerce_app/screens/cart_screen.dart';
+import 'package:ecommmerce_app/screens/feed_screen.dart';
+import 'package:ecommmerce_app/screens/wishlist_screen.dart';
+
 import 'inner_screens/brands_navigation_rail.dart';
 
 import 'cosntants/theme_data.dart';
@@ -33,8 +37,11 @@ class _MyAppState extends State<MyApp> {
             theme: Styles.themeData(themeData.darkTheme, context),
             title: 'Material App',
             routes: {
-              "/home": (_) => BottomBarScreen(),
-              "/brands_navigation_rail": (_) => BrandsNavigationRail()
+              // "/home": (_) => BottomBarScreen(),
+              BrandsNavigationRail.routeName: (_) => BrandsNavigationRail(),
+              CartScreen.routeName: (_) => CartScreen(),
+              FeedScreen.routeName: (_) => FeedScreen(),
+              WishListScreen.routeName:(_) => WishListScreen(),
             },
             home: BottomBarScreen(),
           );

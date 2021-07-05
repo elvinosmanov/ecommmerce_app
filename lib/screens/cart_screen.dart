@@ -5,14 +5,15 @@ import '../cosntants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
-class Cart extends StatelessWidget {
-  const Cart({Key? key}) : super(key: key);
+class CartScreen extends StatelessWidget {
+  static const routeName = "/cart-screen";
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List product = [];
+    List products = [];
     // ignore: prefer_is_not_empty
-    return !product.isEmpty
+    return !products.isEmpty
         ? Scaffold(body: CartEmpty())
         : Scaffold(
             appBar: _buildAppBar(),

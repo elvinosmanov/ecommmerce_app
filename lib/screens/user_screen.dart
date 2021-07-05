@@ -1,3 +1,7 @@
+import 'package:ecommmerce_app/cosntants/network_links.dart';
+import 'package:ecommmerce_app/screens/cart_screen.dart';
+import 'package:ecommmerce_app/screens/wishlist_screen.dart';
+
 import '../cosntants/colors.dart';
 import '../provider/dark_theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +18,8 @@ class UserScreen extends StatefulWidget {
 
 class _UserScreenState extends State<UserScreen> {
   final List<IconData> userTileIcon = [
+    FeatherIcons.heart,
+    FeatherIcons.shoppingCart,
     Icons.email,
     Icons.phone,
     Icons.local_shipping,
@@ -86,8 +92,8 @@ class _UserScreenState extends State<UserScreen> {
                                       ],
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
-                                        image: NetworkImage(
-                                            "https://www.bluebridgewindowcleaning.co.uk/wp-content/uploads/2016/04/default-avatar.png"),
+                                        image:
+                                            NetworkImage(NetworkLinks.avatar),
                                       ),
                                     ),
                                   ),
@@ -101,7 +107,7 @@ class _UserScreenState extends State<UserScreen> {
                           ],
                         ),
                         background: Image.network(
-                          "https://www.bluebridgewindowcleaning.co.uk/wp-content/uploads/2016/04/default-avatar.png",
+                          NetworkLinks.avatar,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -114,13 +120,47 @@ class _UserScreenState extends State<UserScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    userTitle("User Bag"),
+                    Divider(thickness: 1.0, color: Colors.grey),
+                    userListTile(
+                        title: 'WishList',
+                        index: 0,
+                        isTrailing: true,
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(WishListScreen.routeName);
+                        },
+                        context: context),
+                    userListTile(
+                        title: 'Cart',
+                        index: 1,
+                        isTrailing: true,
+                        onTap: () {
+                          Navigator.of(context).pushNamed(CartScreen.routeName);
+                        },
+                        context: context),
                     userTitle("User Information"),
                     Divider(thickness: 1.0, color: Colors.grey),
                     userListTile(
-                        'Email', 'elvinn.osmanov@gmail.com', 0, context),
-                    userListTile('Phone number', '+994554261998', 1, context),
-                    userListTile('Shopping Address', 'AZ1104', 2, context),
-                    userListTile('Joined date', '07/08/2021', 3, context),
+                        title: 'Email',
+                        subtitle: 'elvinn.osmanov@gmail.com',
+                        index: 0,
+                        context: context),
+                    userListTile(
+                        title: 'Phone number',
+                        subtitle: '+994554261998',
+                        index: 1,
+                        context: context),
+                    userListTile(
+                        title: 'Shopping Address',
+                        subtitle: 'AZ1104',
+                        index: 2,
+                        context: context),
+                    userListTile(
+                        title: 'Joined date',
+                        subtitle: '07/08/2021',
+                        index: 3,
+                        context: context),
                     userTitle("User Settings"),
                     Divider(thickness: 1.0, color: Colors.grey),
                     ListTileSwitch(
@@ -134,7 +174,7 @@ class _UserScreenState extends State<UserScreen> {
                         'Dark theme',
                       ),
                     ),
-                    userListTile("Logout", "", 4, context)
+                    userListTile(title: "Logout", index: 4, context: context)
                   ],
                 ),
               )
@@ -160,17 +200,22 @@ class _UserScreenState extends State<UserScreen> {
   }
 
   Material userListTile(
-      String title, String subtitle, int index, BuildContext context) {
+      {required String title,
+      required int index,
+      required BuildContext context,
+      String? subtitle,
+      bool isTrailing = false,
+      Function()? onTap}) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
         splashColor: Theme.of(context).splashColor,
-        onTap: () {},
+        onTap: onTap,
         child: ListTile(
-          title: Text(title),
-          subtitle: Text(subtitle),
-          leading: Icon(userTileIcon[index]),
-        ),
+            title: Text(title),
+            subtitle: Text(subtitle ?? ""),
+            leading: Icon(userTileIcon[index]),
+            trailing: isTrailing ? Icon(Icons.chevron_right_rounded) : null),
       ),
     );
   }
