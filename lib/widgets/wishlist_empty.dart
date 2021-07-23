@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../cosntants/colors.dart';
+import '../../constants/colors.dart';
 import '../../provider/dark_theme_provider.dart';
 
 class WishlistEmpty extends StatelessWidget {

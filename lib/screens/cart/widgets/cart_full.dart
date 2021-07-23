@@ -1,8 +1,10 @@
-import '../../cosntants/colors.dart';
-import '../../provider/dark_theme_provider.dart';
+import '../../../constants/colors.dart';
+import '../../../constants/network_links.dart';
+import '../../../provider/dark_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
+
 
 class CartFull extends StatelessWidget {
   const CartFull({Key? key}) : super(key: key);
@@ -28,8 +30,7 @@ class CartFull extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(
-                    "https://cdn.pixabay.com/photo/2014/05/02/21/50/laptop-336378_960_720.jpg"),
+                image: NetworkImage(NetworkLinks.product),
               ),
             ),
           ),

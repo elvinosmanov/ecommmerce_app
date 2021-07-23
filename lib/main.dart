@@ -1,10 +1,14 @@
-import 'package:ecommmerce_app/screens/cart_screen.dart';
-import 'package:ecommmerce_app/screens/feed_screen.dart';
-import 'package:ecommmerce_app/screens/wishlist_screen.dart';
+import 'provider/products_provider.dart';
+
+import 'inner_screens/product_details.dart';
+
+import 'screens/cart/cart_screen.dart';
+import 'screens/feed_screen.dart';
+import 'screens/wishlist_screen.dart';
 
 import 'inner_screens/brands_navigation_rail.dart';
 
-import 'cosntants/theme_data.dart';
+import 'constants/theme_data.dart';
 import 'provider/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -21,13 +25,16 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   DarkThemeProvider themeChangeProvider = DarkThemeProvider();
-
+  ProductsProvider productsProvider = ProductsProvider();
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (_) => themeChangeProvider,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => productsProvider,
         ),
       ],
       child: Consumer<DarkThemeProvider>(
@@ -41,7 +48,8 @@ class _MyAppState extends State<MyApp> {
               BrandsNavigationRail.routeName: (_) => BrandsNavigationRail(),
               CartScreen.routeName: (_) => CartScreen(),
               FeedScreen.routeName: (_) => FeedScreen(),
-              WishListScreen.routeName:(_) => WishListScreen(),
+              WishListScreen.routeName: (_) => WishListScreen(),
+              ProductDetails.routeName: (_) => ProductDetails(),
             },
             home: BottomBarScreen(),
           );

@@ -1,10 +1,10 @@
 import 'package:backdrop/app_bar.dart';
 import 'package:backdrop/button.dart';
 import 'package:backdrop/scaffold.dart';
-import 'package:ecommmerce_app/cosntants/network_links.dart';
-import 'package:ecommmerce_app/widgets/back_layer.dart';
-import '../widgets/front_layer.dart';
-import '../cosntants/colors.dart';
+import 'widgets/back_layer.dart';
+import 'widgets/front_layer.dart';
+import '../../constants/network_links.dart';
+import '../../constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -1,4 +1,5 @@
-import 'package:ecommmerce_app/cosntants/network_links.dart';
+import '../constants/network_links.dart';
+
 
 import 'brands_rail_widget.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,5 @@
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
+import '../screens/feed_screen.dart';
 import 'package:flutter/material.dart';
 
 class Category extends StatefulWidget {
@@ -43,43 +44,49 @@ class _CategoryState extends State<Category> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10.0),
-              topRight: Radius.circular(10.0),
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, FeedScreen.routeName,
+            arguments: categories[widget.index]["categoryName"]);
+      },
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10.0),
+                topRight: Radius.circular(10.0),
+              ),
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage(
+                  categories[widget.index]["categoryImagePath"].toString(),
+                ),
+              ),
             ),
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(
-                categories[widget.index]["categoryImagePath"].toString(),
+            margin: EdgeInsets.symmetric(horizontal: 10.0),
+            width: 150.0,
+            height: 150.0,
+          ),
+          Positioned(
+            bottom: 0,
+            left: 10,
+            right: 10,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
+              color: Theme.of(context).backgroundColor,
+              child: AutoSizeText(
+                categories[widget.index]['categoryName'].toString(),
+                maxLines: 1,
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    color: Theme.of(context).textSelectionTheme.selectionColor),
               ),
             ),
           ),
-          margin: EdgeInsets.symmetric(horizontal: 10.0),
-          width: 150.0,
-          height: 150.0,
-        ),
-        Positioned(
-          bottom: 0,
-          left: 10,
-          right: 10,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
-            color: Theme.of(context).backgroundColor,
-            child: AutoSizeText(
-              categories[widget.index]['categoryName'].toString(),
-              maxLines: 1,
-              style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                  color: Theme.of(context).textSelectionTheme.selectionColor),
-            ),
-          ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
-import '../inner_screens/brands_navigation_rail.dart';
-import 'popular_prodcuts.dart';
+import '../../../inner_screens/brands_navigation_rail.dart';
+import '../../../widgets/category.dart';
+import '../../../widgets/popular_prodcuts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
-import 'category.dart';
 
 class FrontLayer extends StatefulWidget {
   @override
@@ -102,7 +102,7 @@ class _FrontLayerState extends State<FrontLayer> {
       width: double.infinity,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 4,
+        itemCount: 7,
         itemBuilder: (context, index) {
           return Category(
             index: index,

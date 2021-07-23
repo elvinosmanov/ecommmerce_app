@@ -1,8 +1,8 @@
-import 'package:ecommmerce_app/cosntants/network_links.dart';
-import 'package:ecommmerce_app/screens/cart_screen.dart';
-import 'package:ecommmerce_app/screens/wishlist_screen.dart';
+import '../constants/network_links.dart';
+import 'cart/cart_screen.dart';
+import 'wishlist_screen.dart';
 
-import '../cosntants/colors.dart';
+import '../constants/colors.dart';
 import '../provider/dark_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';

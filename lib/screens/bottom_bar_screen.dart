@@ -3,9 +3,9 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
 
-import 'cart_screen.dart';
+import 'cart/cart_screen.dart';
 import 'feed_screen.dart';
-import 'home_screen.dart';
+import 'home/home_screen.dart';
 import 'search_screen.dart';
 import 'user_screen.dart';
 
@@ -47,13 +47,13 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Container(
+              Padding(
                   padding: EdgeInsets.only(left: 30.0),
                   child: _navigationItem(index: 0)),
               _navigationItem(index: 1),
               SizedBox(width: 40),
               _navigationItem(index: 3),
-              Container(
+              Padding(
                 padding: EdgeInsets.only(right: 30.0),
                 child: _navigationItem(index: 4),
               ), // The dummy child
@@ -83,6 +83,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
           padding: EdgeInsets.zero,
           height: 30.0,
           child: IconButton(
+              splashRadius: _selectedIndex != index ? 30.0 : 20.0,
               tooltip: _pages[index]['title'],
               padding: EdgeInsets.zero,
               color: _selectedIndex != index ? Colors.blue[200] : Colors.purple,
@@ -94,11 +95,13 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 });
               }),
         ),
-        if (_selectedIndex == index)
-          Text(
-            _pages[index]['title'],
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.0),
-          )
+        // if (_selectedIndex == index)
+        Text(
+          _pages[index]['title'],
+          style: _selectedIndex == index
+              ? TextStyle(fontWeight: FontWeight.bold, fontSize: 13.0)
+              : TextStyle(fontSize: 11.0),
+        )
       ],
     );
   }

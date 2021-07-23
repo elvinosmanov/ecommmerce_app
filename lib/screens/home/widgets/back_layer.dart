@@ -1,5 +1,6 @@
-import 'package:ecommmerce_app/cosntants/colors.dart';
-import 'package:ecommmerce_app/cosntants/network_links.dart';
+import '../../../constants/colors.dart';
+import '../../../constants/network_links.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
