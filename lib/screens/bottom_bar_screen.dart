@@ -83,7 +83,6 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
           padding: EdgeInsets.zero,
           height: 30.0,
           child: IconButton(
-              splashRadius: _selectedIndex != index ? 30.0 : 20.0,
               tooltip: _pages[index]['title'],
               padding: EdgeInsets.zero,
               color: _selectedIndex != index ? Colors.blue[200] : Colors.purple,
@@ -91,6 +90,8 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
               icon: Icon(_pages[index]['icon']),
               onPressed: () {
                 setState(() {
+                  print('selected: $index');
+
                   _selectedIndex = index;
                 });
               }),

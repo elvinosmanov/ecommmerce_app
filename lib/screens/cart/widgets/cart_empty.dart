@@ -3,7 +3,6 @@ import '../../../provider/dark_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class CartEmpty extends StatelessWidget {
   const CartEmpty({Key? key}) : super(key: key);
 

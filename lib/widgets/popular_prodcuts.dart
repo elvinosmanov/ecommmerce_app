@@ -1,11 +1,16 @@
+import 'package:ecommmerce_app/inner_screens/product_details.dart';
+import 'package:ecommmerce_app/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:provider/provider.dart';
 
 class PopularProducts extends StatelessWidget {
   const PopularProducts({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<Product>(context);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
@@ -15,7 +20,10 @@ class PopularProducts extends StatelessWidget {
             bottomLeft: Radius.circular(10.0),
             bottomRight: Radius.circular(10.0),
           ),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, ProductDetails.routeName,
+                arguments: product);
+          },
           child: Container(
             decoration: BoxDecoration(
               color: Theme.of(context).backgroundColor,
@@ -34,20 +42,13 @@ class PopularProducts extends StatelessWidget {
                       height: 170,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image:
-                                AssetImage("assets/images/CatFurniture.jpg")),
+                            fit: BoxFit.contain,
+                            image: NetworkImage(product.imageUrl)),
                       ),
                     ),
-                    // Positioned(
-                    //   right: 10,
-                    //   top: 12,
-                    //   child: Icon(Icons.star_border_outlined),
-                    // ),
-
                     Positioned(
-                      right: 12,
-                      top: 10,
+                      right: 10,
+                      top: 8,
                       child: Icon(
                         Icons.star,
                         color: Colors.grey.shade800,
@@ -55,7 +56,7 @@ class PopularProducts extends StatelessWidget {
                     ),
                     Positioned(
                       right: 10,
-                      top: 7,
+                      top: 8,
                       child: Icon(
                         Icons.star_outlined,
                         color: Colors.white,
@@ -68,7 +69,7 @@ class PopularProducts extends StatelessWidget {
                         padding: EdgeInsets.all(8.0),
                         color: Theme.of(context).backgroundColor,
                         child: Text(
-                          '\$ 99.0',
+                          '\$ ${product.price}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context)
@@ -85,7 +86,7 @@ class PopularProducts extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Title',
+                        product.title,
                         maxLines: 1,
                         style: TextStyle(
                             fontSize: 18.0, fontWeight: FontWeight.bold),
@@ -93,13 +94,15 @@ class PopularProducts extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text('Description',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.grey[800])),
+                          Flexible(
+                            child: Text(product.description,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.grey[800])),
+                          ),
                           Material(
                             color: Colors.transparent,
                             borderRadius: BorderRadius.circular(24.0),

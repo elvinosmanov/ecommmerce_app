@@ -26,11 +26,12 @@ class _ProductDetailsState extends State<ProductDetails> {
   late EdgeInsets sidePadding;
   @override
   Widget build(BuildContext context) {
-    // Product product = Provider.of<Product>(context);
-    Product product = ModalRoute.of(context)!.settings.arguments as Product;
-    List<Product> products = Provider.of<ProductsProvider>(context).getProducts;
-
     sidePadding = EdgeInsets.symmetric(horizontal: padding);
+
+    final provider = Provider.of<ProductsProvider>(context, listen: false);
+    Product product = ModalRoute.of(context)!.settings.arguments as Product;
+    final products = provider.getPopularProducts();
+    // final suggestedProducts = provider.getSuggestedProduct(product.id);
     theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(

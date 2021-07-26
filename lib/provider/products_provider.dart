@@ -18,6 +18,25 @@ class ProductsProvider with ChangeNotifier {
     return _categoryList;
   }
 
+  List<Product> getProductsByBrand(String brand) {
+    List<Product> _brandList;
+    if (brand.isNotEmpty) {
+      _brandList = _products
+          .where((element) =>
+              element.brand.toLowerCase().contains(brand.toLowerCase()))
+          .toList();
+    } else {
+      _brandList = _products;
+    }
+    return _brandList;
+  }
+
+  List<Product> getPopularProducts() {
+    final _popularList =
+        _products.where((element) => element.isPopular).toList();
+    return _popularList;
+  }
+
   List<Product> _products = [
     Product(
         id: 'Samsung1',
@@ -599,4 +618,6 @@ class ProductsProvider with ChangeNotifier {
         quantity: 951,
         isPopular: true),
   ];
+
+  getSuggestedProduct(String id) {}
 }

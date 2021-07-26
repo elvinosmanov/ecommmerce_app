@@ -1,10 +1,13 @@
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
+import 'package:ecommmerce_app/models/product.dart';
+import 'package:ecommmerce_app/provider/products_provider.dart';
+import 'package:ecommmerce_app/screens/feed_screen.dart';
+import 'package:provider/provider.dart';
 import '../../../inner_screens/brands_navigation_rail.dart';
 import '../../../widgets/category.dart';
 import '../../../widgets/popular_prodcuts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-
 
 class FrontLayer extends StatefulWidget {
   @override
@@ -30,6 +33,8 @@ class _FrontLayerState extends State<FrontLayer> {
   ];
   @override
   Widget build(BuildContext context) {
+    final productsProvider =
+        Provider.of<ProductsProvider>(context, listen: false);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,10 +42,21 @@ class _FrontLayerState extends State<FrontLayer> {
           carousel(),
           titleCategories(),
           categories(),
-          titlePopular(title: "Popular Brands"),
+          titlePopular(
+              title: "Popular Brands",
+              onPressed: () {
+                Navigator.pushNamed(context, BrandsNavigationRail.routeName,
+                    arguments: 7);
+              }),
           popularBrands(context),
-          titlePopular(title: "Popular Products"),
-          popularProducts(),
+          titlePopular(
+              title: "Popular Products",
+              onPressed: () {
+                Navigator.pushNamed(context, FeedScreen.routeName,
+                    arguments: 'popular');
+              }),
+          popularProducts(
+              popularProducts: productsProvider.getPopularProducts()),
         ],
       ),
     );
@@ -122,7 +138,7 @@ class _FrontLayerState extends State<FrontLayer> {
     );
   }
 
-  Padding titlePopular({required String title}) {
+  Padding titlePopular({required String title, required Function() onPressed}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -132,26 +148,32 @@ class _FrontLayerState extends State<FrontLayer> {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
           ),
           Spacer(),
-          Text(
-            'View all...',
-            style: TextStyle(
-                fontSize: 15, fontWeight: FontWeight.w800, color: Colors.red),
+          TextButton(
+            onPressed: onPressed,
+            child: Text('View all...',
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.red)),
           )
         ],
       ),
     );
   }
 
-  Container popularProducts() {
+  Container popularProducts({required List<Product> popularProducts}) {
     return Container(
       width: double.infinity,
       height: 285,
       margin: EdgeInsets.symmetric(horizontal: 3),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 8,
+        itemCount: popularProducts.length,
         itemBuilder: (context, index) {
-          return PopularProducts();
+          return ChangeNotifierProvider.value(
+            value: popularProducts[index],
+            child: PopularProducts(),
+          );
         },
       ),
     );

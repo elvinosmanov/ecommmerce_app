@@ -1,15 +1,21 @@
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
-import '../constants/network_links.dart';
+import 'package:ecommmerce_app/inner_screens/product_details.dart';
+import 'package:ecommmerce_app/models/product.dart';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BrandsRailWidget extends StatelessWidget {
-  final String brand;
-  const BrandsRailWidget({Key? key, required this.brand}) : super(key: key);
+  const BrandsRailWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Product product = Provider.of<Product>(context);
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(ProductDetails.routeName, arguments: product);
+      },
       child: Container(
           margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 24.0),
           constraints: BoxConstraints(
@@ -29,8 +35,7 @@ class BrandsRailWidget extends StatelessWidget {
                     ],
                     image: DecorationImage(
                       fit: BoxFit.contain,
-                      image: NetworkImage(
-                          NetworkLinks.product),
+                      image: NetworkImage(product.imageUrl),
                     ),
                   ),
                 ),
@@ -59,7 +64,7 @@ class BrandsRailWidget extends StatelessWidget {
                         constraints:
                             BoxConstraints(maxWidth: 120, minWidth: 90),
                         child: AutoSizeText(
-                          'TITLE',
+                          product.title,
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -72,7 +77,7 @@ class BrandsRailWidget extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        'US 16.95\$',
+                        'US ${product.price}\$',
                         maxLines: 1,
                         style: TextStyle(
                           fontSize: 25.0,
@@ -82,7 +87,7 @@ class BrandsRailWidget extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        brand,
+                        product.brand,
                         style: TextStyle(color: Colors.grey, fontSize: 18.0),
                       ),
                     ],

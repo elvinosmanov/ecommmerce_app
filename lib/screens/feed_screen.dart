@@ -14,13 +14,18 @@ class FeedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String categoryName = '';
+    String name = '';
+    List<Product> products;
+    final provider = Provider.of<ProductsProvider>(context, listen: false);
     if (ModalRoute.of(context)?.settings.arguments != null) {
-      categoryName = ModalRoute.of(context)!.settings.arguments as String;
+      name = ModalRoute.of(context)!.settings.arguments as String;
+    }
+    if (name == 'popular') {
+      products = provider.getPopularProducts();
+    } else {
+      products = provider.getProductsByCategoryName(name);
     }
 
-    List<Product> products = Provider.of<ProductsProvider>(context)
-        .getProductsByCategoryName(categoryName);
     return Scaffold(
         body: products.isNotEmpty
             ? SafeArea(
