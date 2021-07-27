@@ -1,6 +1,6 @@
 import '../widgets/product_empty.dart';
 
-import '../models/product.dart';
+import '../models/product_model.dart';
 import '../provider/products_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +15,7 @@ class FeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String name = '';
-    List<Product> products;
+    List<ProductModel> products;
     final provider = Provider.of<ProductsProvider>(context, listen: false);
     if (ModalRoute.of(context)?.settings.arguments != null) {
       name = ModalRoute.of(context)!.settings.arguments as String;

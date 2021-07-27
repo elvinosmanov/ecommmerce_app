@@ -1,10 +1,10 @@
-import '../models/product.dart';
+import '../models/product_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProductsProvider with ChangeNotifier {
-  List<Product> get getProducts => _products;
-  List<Product> getProductsByCategoryName(String categoryName) {
-    List<Product> _categoryList;
+  List<ProductModel> get getProducts => _products;
+  List<ProductModel> getProductsByCategoryName(String categoryName) {
+    List<ProductModel> _categoryList;
     if (categoryName.isNotEmpty) {
       _categoryList = _products
           .where((element) => element.productCategoryName
@@ -18,8 +18,8 @@ class ProductsProvider with ChangeNotifier {
     return _categoryList;
   }
 
-  List<Product> getProductsByBrand(String brand) {
-    List<Product> _brandList;
+  List<ProductModel> getProductsByBrand(String brand) {
+    List<ProductModel> _brandList;
     if (brand.isNotEmpty) {
       _brandList = _products
           .where((element) =>
@@ -31,14 +31,14 @@ class ProductsProvider with ChangeNotifier {
     return _brandList;
   }
 
-  List<Product> getPopularProducts() {
+  List<ProductModel> getPopularProducts() {
     final _popularList =
         _products.where((element) => element.isPopular).toList();
     return _popularList;
   }
 
-  List<Product> _products = [
-    Product(
+  List<ProductModel> _products = [
+    ProductModel(
         id: 'Samsung1',
         title: 'Samsung Galaxy S9',
         description:
@@ -50,7 +50,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Phones',
         quantity: 65,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Samsung Galaxy A10s',
         title: 'Samsung Galaxy A10s',
         description:
@@ -62,7 +62,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Phones',
         quantity: 1002,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Samsung Galaxy A51',
         title: 'Samsung Galaxy A51',
         description:
@@ -74,7 +74,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Phones',
         quantity: 6423,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Huawei P40 Pro',
         title: 'Huawei P40 Pro',
         description:
@@ -86,7 +86,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Phones',
         quantity: 3,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'iPhone 12 Pro',
         title: 'iPhone 12 Pro',
         description:
@@ -97,7 +97,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Phones',
         quantity: 3,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'iPhone 12 Pro Max ',
         title: 'iPhone 12 Pro Max ',
         description:
@@ -109,7 +109,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Phones',
         quantity: 2654,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Hanes Mens ',
         title: 'Long Sleeve Beefy Henley Shirt',
         description: 'Hanes Men\'s Long Sleeve Beefy Henley Shirt ',
@@ -120,7 +120,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Clothes',
         quantity: 58466,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Weave Jogger',
         title: 'Weave Jogger',
         description: 'Champion Mens Reverse Weave Jogger',
@@ -131,7 +131,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Clothes',
         quantity: 84894,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Adeliber Dresses for Womens',
         title: 'Adeliber Dresses for Womens',
         description:
@@ -143,7 +143,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Clothes',
         quantity: 49847,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Tanjun Sneakers',
         title: 'Tanjun Sneakers',
         description:
@@ -155,7 +155,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Shoes',
         quantity: 65489,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Training Pant Female',
         title: 'Training Pant Female',
         description: 'Nike Epic Training Pant Female ',
@@ -166,7 +166,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Clothes',
         quantity: 89741,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Trefoil Tee',
         title: 'Trefoil Tee',
         description: 'Originals Women\'s Trefoil Tee ',
@@ -177,7 +177,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Clothes',
         quantity: 8941,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Long SleeveWoman',
         title: 'Long Sleeve woman',
         description: ' Boys\' Long Sleeve Cotton Jersey Hooded T-Shirt Tee',
@@ -188,7 +188,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Clothes',
         quantity: 3,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Eye Cream for Wrinkles',
         title: 'Eye Cream for Wrinkles',
         description:
@@ -200,7 +200,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Beauty & health',
         quantity: 8515,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Mango Body Yogurt',
         title: 'Mango Body Yogurt',
         description:
@@ -212,7 +212,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Beauty & health',
         quantity: 3,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Food Intensive Skin',
         title: 'Food Intensive Skin',
         description:
@@ -224,7 +224,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Beauty & health',
         quantity: 38425,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Ultra Shea Body Cream',
         title: 'Ultra Shea Body Cream',
         description:
@@ -236,7 +236,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Beauty & health',
         quantity: 384,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Soft Moisturizing Crème',
         title: 'Soft Moisturizing Crème',
         description:
@@ -248,7 +248,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Beauty & health',
         quantity: 45,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Body Cream Cocoa Butter',
         title: 'Body Cream Cocoa Butter',
         description: 'NIVEA Cocoa Butter Body Cream 15.5 Oz',
@@ -259,7 +259,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Beauty & health',
         quantity: 98432,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Skin Repair Body Lotion',
         title: 'Skin Repair Body Lotion',
         description:
@@ -271,7 +271,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Beauty & health',
         quantity: 3811,
         isPopular: false),
-    Product(
+    ProductModel(
         id: '15 5000 Laptop',
         title: '15 5000 Laptop',
         description:
@@ -283,7 +283,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Laptops',
         quantity: 325,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Business Laptop',
         title: 'Business Laptop',
         description:
@@ -295,7 +295,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Laptops',
         quantity: 81,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Latitude 5411 14" Notebook',
         title: 'Latitude 5411 14" Notebook',
         description:
@@ -307,7 +307,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Laptops',
         quantity: 815,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'New Apple MacBook Pro with Apple',
         title: 'New Apple MacBook Pro with Apple',
         description:
@@ -319,7 +319,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Laptops',
         quantity: 885,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Apple MacBook Air',
         title: 'Apple MacBook Air',
         description:
@@ -331,7 +331,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Laptops',
         quantity: 815,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Apple MacBook Progag',
         title: 'Apple MacBook Pro',
         description:
@@ -343,7 +343,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Laptops',
         quantity: 815,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Apple MacBook Air',
         title: 'Apple MacBook Air',
         description:
@@ -355,7 +355,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Laptops',
         quantity: 4455,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Apple 16 MacBook Pro',
         title: 'Apple 16 MacBook Pro',
         description:
@@ -367,7 +367,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Laptops',
         quantity: 885,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Sofa Setttt',
         title: 'Sofa Set',
         description: 'Beverly Fine Funiture Sectional Sofa Set, 91A Black ',
@@ -378,7 +378,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Furniture',
         quantity: 91,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Furniture Classroom with Teacher\'s',
         title: 'Furniture Classroom with Teacher\'s',
         description:
@@ -390,7 +390,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Furniture',
         quantity: 815,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Sofa Couch for Two People',
         title: 'Sofa Couch for Two People',
         description:
@@ -402,7 +402,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Furniture',
         quantity: 8100,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Delta Children Plastic Toddler Bed',
         title: 'Delta Children Plastic Toddler Bed',
         description:
@@ -414,7 +414,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Furniture',
         quantity: 9145,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Outdoor Patio ',
         title: 'Outdoor Patio ',
         description:
@@ -426,7 +426,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Furniture',
         quantity: 25,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Flash Furniture Nantucket 6 Piece',
         title: 'Flash Furniture Nantucket 6 Piece',
         description:
@@ -438,7 +438,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Furniture',
         quantity: 651,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Homall 4 Pieces Patio Outdoor Furniture Sets',
         title: 'Homall 4 Pieces Patio Outdoor Furniture Sets',
         description:
@@ -450,7 +450,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Furniture',
         quantity: 594,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Ashley Furniture Signature Design',
         title: 'Ashley Furniture Signature Design',
         description:
@@ -462,7 +462,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Furniture',
         quantity: 78,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Apple Watch Series 3',
         title: 'Apple Watch Series 3',
         description:
@@ -474,7 +474,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 156,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Garmin Forerunner 45S',
         title: 'Garmin Forerunner 45S',
         description:
@@ -486,7 +486,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 142,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Samsung Galaxy Watch Active 2',
         title: 'Samsung Galaxy Watch Active 2',
         description:
@@ -498,7 +498,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 167,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Garmin vivoactive 4S',
         title: 'Garmin vivoactive 4S',
         description:
@@ -510,7 +510,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 659,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Patek Philippe World',
         title: 'Patek Philippe World',
         description: 'Patek Philippe World Time Men\'s Watch Model 5131/1P-001',
@@ -521,7 +521,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 98,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Bell & Ross Men',
         title: 'Bell & Ross Men',
         description:
@@ -533,7 +533,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 951,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'New Apple Watch Series',
         title: 'New Apple Watch Series',
         description:
@@ -545,7 +545,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 951,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'New Apple Watch SE',
         title: 'New Apple Watch SE',
         description:
@@ -557,7 +557,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 951,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'YAMAY Smart Watch 2020 Ver',
         title: 'YAMAY Smart Watch 2020 Ver',
         description:
@@ -569,7 +569,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 56,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Samsung Galaxy Watch Active 23',
         title: 'Samsung Galaxy Watch Active ',
         description:
@@ -581,7 +581,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 78,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Samsung Galaxy Watch 3',
         title: 'Samsung Galaxy Watch 3',
         description:
@@ -593,7 +593,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 9598,
         isPopular: true),
-    Product(
+    ProductModel(
         id: 'Samsung Galaxy Watch Active2 ',
         title: 'Samsung Galaxy Watch Active2 ',
         description:
@@ -605,7 +605,7 @@ class ProductsProvider with ChangeNotifier {
         productCategoryName: 'Watches',
         quantity: 951,
         isPopular: false),
-    Product(
+    ProductModel(
         id: 'Huawei Watch 2 Sport Smartwatch',
         title: 'Huawei Watch 2 Sport Smartwatch',
         description:

@@ -1,9 +1,9 @@
-import 'widgets/cart_empty.dart';
-import 'widgets/cart_full.dart';
-
-import '../../constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+
+import '../../constants/colors.dart';
+import 'widgets/cart_empty.dart';
+import 'widgets/cart_full.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = "/cart-screen";
@@ -13,7 +13,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List products = [];
     // ignore: prefer_is_not_empty
-    return products.isEmpty
+    return !products.isEmpty
         ? Scaffold(body: CartEmpty())
         : Scaffold(
             appBar: _buildAppBar(),

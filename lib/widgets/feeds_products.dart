@@ -1,7 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:provider/provider.dart';
 import '../inner_screens/product_details.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class FeedProducts extends StatefulWidget {
@@ -12,7 +12,7 @@ class FeedProducts extends StatefulWidget {
 class _FeedProductsState extends State<FeedProducts> {
   @override
   Widget build(BuildContext context) {
-    Product product = Provider.of<Product>(context);
+    ProductModel product = Provider.of<ProductModel>(context);
 
     return Padding(
       padding: const EdgeInsets.all(4.0),

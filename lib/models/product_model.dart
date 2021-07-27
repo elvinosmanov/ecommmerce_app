@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class Product with ChangeNotifier {
+class ProductModel with ChangeNotifier {
   final String id;
   final String title;
   final String description;
@@ -12,7 +12,7 @@ class Product with ChangeNotifier {
   final bool isPopular;
   bool? isFavorite;
 
-  Product(
+  ProductModel(
       {required this.id,
       required this.title,
       required this.description,

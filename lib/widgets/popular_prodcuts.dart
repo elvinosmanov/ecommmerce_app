@@ -1,5 +1,5 @@
-import 'package:ecommmerce_app/inner_screens/product_details.dart';
-import 'package:ecommmerce_app/models/product.dart';
+import '../inner_screens/product_details.dart';
+import '../models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +9,7 @@ class PopularProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context);
+    final product = Provider.of<ProductModel>(context);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),

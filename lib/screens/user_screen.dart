@@ -40,6 +40,12 @@ class _UserScreenState extends State<UserScreen> {
   }
 
   @override
+  void dispose() {
+    _scrollController!.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final themeData = Provider.of<DarkThemeProvider>(context);
     return Scaffold(

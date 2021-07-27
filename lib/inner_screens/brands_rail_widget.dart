@@ -1,6 +1,6 @@
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
-import 'package:ecommmerce_app/inner_screens/product_details.dart';
-import 'package:ecommmerce_app/models/product.dart';
+import 'product_details.dart';
+import '../models/product_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +10,7 @@ class BrandsRailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Product product = Provider.of<Product>(context);
+    final ProductModel product = Provider.of<ProductModel>(context);
     return InkWell(
       onTap: () {
         Navigator.of(context)

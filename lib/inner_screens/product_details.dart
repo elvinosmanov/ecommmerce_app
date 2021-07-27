@@ -1,4 +1,4 @@
-import '../models/product.dart';
+import '../models/product_model.dart';
 import '../provider/products_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +29,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     sidePadding = EdgeInsets.symmetric(horizontal: padding);
 
     final provider = Provider.of<ProductsProvider>(context, listen: false);
-    Product product = ModalRoute.of(context)!.settings.arguments as Product;
+    ProductModel product = ModalRoute.of(context)!.settings.arguments as ProductModel;
     final products = provider.getPopularProducts();
     // final suggestedProducts = provider.getSuggestedProduct(product.id);
     theme = Theme.of(context);

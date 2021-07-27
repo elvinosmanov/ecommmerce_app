@@ -1,5 +1,5 @@
-import 'package:ecommmerce_app/models/product.dart';
-import 'package:ecommmerce_app/provider/products_provider.dart';
+import '../models/product_model.dart';
+import '../provider/products_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../constants/network_links.dart';
