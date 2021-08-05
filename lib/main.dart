@@ -1,3 +1,8 @@
+import 'package:ecommmerce_app/provider/favs_provider.dart';
+import 'package:ecommmerce_app/widgets/feeds_dialog.dart';
+
+import 'provider/cart_provider.dart';
+
 import 'provider/products_provider.dart';
 
 import 'inner_screens/product_details.dart';
@@ -25,7 +30,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   DarkThemeProvider themeChangeProvider = DarkThemeProvider();
-  ProductsProvider productsProvider = ProductsProvider();
+  ProductProvider productsProvider = ProductProvider();
+  CartProvider cartProvider = CartProvider();
+  FavsProvider favsProvider = FavsProvider();
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -35,6 +42,12 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (_) => productsProvider,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => cartProvider,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => favsProvider,
         ),
       ],
       child: Consumer<DarkThemeProvider>(
@@ -50,6 +63,7 @@ class _MyAppState extends State<MyApp> {
               FeedScreen.routeName: (_) => FeedScreen(),
               WishListScreen.routeName: (_) => WishListScreen(),
               ProductDetails.routeName: (_) => ProductDetails(),
+              FeedsDialog.routeName: (_) => FeedsDialog(),
             },
             home: BottomBarScreen(),
           );

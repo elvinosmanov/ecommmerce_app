@@ -1,8 +1,10 @@
 import 'package:badges/badges.dart';
-import 'package:provider/provider.dart';
-import '../inner_screens/product_details.dart';
-import '../models/product_model.dart';
+import 'package:ecommmerce_app/inner_screens/product_details.dart';
+import 'package:ecommmerce_app/widgets/feeds_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/product_model.dart';
 
 class FeedProducts extends StatefulWidget {
   @override
@@ -18,8 +20,7 @@ class _FeedProductsState extends State<FeedProducts> {
       padding: const EdgeInsets.all(4.0),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, ProductDetails.routeName,
-              arguments: product);
+          Navigator.pushNamed(context, ProductDetails.routeName, arguments: product);
         },
         child: Container(
           width: 240,
@@ -37,27 +38,23 @@ class _FeedProductsState extends State<FeedProducts> {
                     borderRadius: BorderRadius.circular(2.0),
                     child: Container(
                       width: double.infinity,
-                      constraints: BoxConstraints(
-                          minHeight: 80,
-                          maxHeight: MediaQuery.of(context).size.height * .2),
+                      constraints: BoxConstraints(minHeight: 80, maxHeight: MediaQuery.of(context).size.height * .2),
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.contain,
                           image: NetworkImage(product.imageUrl),
                         ),
                       ),
                     ),
                   ),
-                  Badge(
-                    toAnimate: true,
-                    shape: BadgeShape.square,
-                    badgeColor: Colors.pink,
-                    borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(8.0),
-                        topLeft: Radius.circular(2.0)),
-                    badgeContent:
-                        Text('NEW', style: TextStyle(color: Colors.white)),
-                  ),
+                  if (!product.isPopular)
+                    Badge(
+                      toAnimate: true,
+                      shape: BadgeShape.square,
+                      badgeColor: Colors.pink,
+                      borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0), topLeft: Radius.circular(2.0)),
+                      badgeContent: Text('NEW', style: TextStyle(color: Colors.white)),
+                    ),
                 ],
               ),
               Container(
@@ -92,16 +89,20 @@ class _FeedProductsState extends State<FeedProducts> {
                       children: <Widget>[
                         Text(
                           'Quantity: ${product.quantity} left',
-                          style: TextStyle(
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.grey),
+                          style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.grey),
                         ),
                         Material(
                           color: Colors.transparent,
                           child: InkWell(
                             borderRadius: BorderRadius.circular(12.0),
-                            onTap: () {},
+                            onTap: () {
+                              showDialog(
+                                barrierColor: Colors.black.withOpacity(0.8),
+                                barrierDismissible: false,
+                                context: context,
+                                builder: (context) => FeedsDialog(product: product),
+                              );
+                            },
                             child: Icon(Icons.more_horiz),
                           ),
                         )

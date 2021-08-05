@@ -1,7 +1,8 @@
-import '../models/product_model.dart';
 import 'package:flutter/cupertino.dart';
 
-class ProductsProvider with ChangeNotifier {
+import '../models/product_model.dart';
+
+class ProductProvider with ChangeNotifier {
   List<ProductModel> get getProducts => _products;
   List<ProductModel> getProductsByCategoryName(String categoryName) {
     List<ProductModel> _categoryList;
@@ -16,6 +17,12 @@ class ProductsProvider with ChangeNotifier {
     }
 
     return _categoryList;
+  }
+
+  ProductModel getProductsById(String productId) {
+    List<ProductModel> product =
+        _products.where((element) => element.id == productId).toList();
+    return product[0];
   }
 
   List<ProductModel> getProductsByBrand(String brand) {

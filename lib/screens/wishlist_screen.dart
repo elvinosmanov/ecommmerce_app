@@ -1,4 +1,6 @@
+import 'package:ecommmerce_app/provider/favs_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/wishlist_empty.dart';
 import '../widgets/wishlist_full.dart';
@@ -9,17 +11,19 @@ class WishListScreen extends StatelessWidget {
   const WishListScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    List wishlist = [];
-    return wishlist.isEmpty
+    final favsProvider = Provider.of<FavsProvider>(context);
+    return favsProvider.getFavsItems.isEmpty
         ? Scaffold(body: WishlistEmpty())
         : Scaffold(
             appBar: AppBar(
-              title: Text('WishList(7)'),
+              backgroundColor: Theme.of(context).backgroundColor,
+              title: Text('WishList(${favsProvider.getFavsItems.length})'),
             ),
             body: ListView.builder(
-              itemCount: 5,
+              itemCount: favsProvider.getFavsItems.length,
               itemBuilder: (context, index) {
-                return WishlistFull();
+                return ChangeNotifierProvider.value(
+                    value: favsProvider.getFavsItems.values.elementAt(index), child: WishlistFull());
               },
             ),
           );

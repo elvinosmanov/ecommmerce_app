@@ -1,11 +1,9 @@
-import '../models/product_model.dart';
-import '../provider/products_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../constants/network_links.dart';
-
+import '../provider/products_provider.dart';
 import 'brands_rail_widget.dart';
-import 'package:flutter/material.dart';
 
 class BrandsNavigationRail extends StatefulWidget {
   static const routeName = "/brands_navigation_rail";
@@ -44,8 +42,6 @@ class _BrandsNavigationRailState extends State<BrandsNavigationRail> {
         children: <Widget>[
           LayoutBuilder(
             builder: (context, constraints) {
-              print(constraints.maxHeight);
-              print(constraints.minHeight);
               return SingleChildScrollView(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(minHeight: constraints.maxHeight),
@@ -135,7 +131,7 @@ class ContentSpace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProductsProvider>(context, listen: false);
+    final provider = Provider.of<ProductProvider>(context, listen: false);
     final productsBrand = provider.getProductsByBrand(brandName);
     return Expanded(
         child: ListView.builder(

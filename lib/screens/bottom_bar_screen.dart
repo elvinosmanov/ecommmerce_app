@@ -38,7 +38,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       bottomNavigationBar: BottomAppBar(
         notchMargin: 5,
         elevation: 5.0,
-        clipBehavior: Clip.antiAlias,
+        clipBehavior: Clip.none,
         shape: CircularNotchedRectangle(),
         child: Container(
           height: 60,
@@ -90,8 +90,6 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
               icon: Icon(_pages[index]['icon']),
               onPressed: () {
                 setState(() {
-                  print('selected: $index');
-
                   _selectedIndex = index;
                 });
               }),

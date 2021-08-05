@@ -1,13 +1,14 @@
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
-import '../../../models/product_model.dart';
-import '../../../provider/products_provider.dart';
-import '../../feed_screen.dart';
-import 'package:provider/provider.dart';
-import '../../../inner_screens/brands_navigation_rail.dart';
-import '../../../widgets/category.dart';
-import '../../../widgets/popular_prodcuts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:provider/provider.dart';
+
+import '../../../inner_screens/brands_navigation_rail.dart';
+import '../../../models/product_model.dart';
+import '../../../provider/products_provider.dart';
+import '../../../widgets/category.dart';
+import '../../../widgets/popular_prodcuts.dart';
+import '../../feed_screen.dart';
 
 class FrontLayer extends StatefulWidget {
   @override
@@ -34,7 +35,7 @@ class _FrontLayerState extends State<FrontLayer> {
   @override
   Widget build(BuildContext context) {
     final productsProvider =
-        Provider.of<ProductsProvider>(context, listen: false);
+        Provider.of<ProductProvider>(context, listen: false);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

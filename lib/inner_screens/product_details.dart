@@ -1,3 +1,8 @@
+import 'package:badges/badges.dart';
+import 'package:ecommmerce_app/provider/favs_provider.dart';
+
+import '../provider/cart_provider.dart';
+
 import '../models/product_model.dart';
 import '../provider/products_provider.dart';
 import 'package:provider/provider.dart';
@@ -27,33 +32,57 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     sidePadding = EdgeInsets.symmetric(horizontal: padding);
-
-    final provider = Provider.of<ProductsProvider>(context, listen: false);
     ProductModel product = ModalRoute.of(context)!.settings.arguments as ProductModel;
-    final products = provider.getPopularProducts();
-    // final suggestedProducts = provider.getSuggestedProduct(product.id);
+    final productProvider = Provider.of<ProductProvider>(context);
+    final cartProvider = Provider.of<CartProvider>(context);
+    final favsProvider = Provider.of<FavsProvider>(context);
+    bool cartAdded = cartProvider.getCartItems.containsKey(product.id);
+    bool favsAdded = favsProvider.getFavsItems.containsKey(product.id);
+
+    final products = productProvider.getPopularProducts();
     theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('DETAIL'),
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, WishListScreen.routeName);
-            },
-            icon: Icon(Icons.favorite_border_outlined),
-            color: ColorsConst.favColor,
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, CartScreen.routeName);
-            },
-            icon: Icon(
-              FeatherIcons.shoppingCart,
-              color: Colors.purple[900],
+          Consumer<FavsProvider>(
+            builder: (context, value, child) => Badge(
+              toAnimate: true,
+              badgeColor: ColorsConst.favBadgeColor,
+              position: BadgePosition.topEnd(top: 5, end: 5),
+              animationType: BadgeAnimationType.slide,
+              badgeContent: Text(value.getFavsItems.length.toString()),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, WishListScreen.routeName);
+                },
+                icon: Icon(Icons.favorite_border_outlined),
+                color: ColorsConst.favColor,
+              ),
             ),
           ),
+          Consumer<CartProvider>(
+            builder: (context, value, child) => Badge(
+              toAnimate: true,
+              badgeColor: ColorsConst.cartBadgeColor,
+              position: BadgePosition.topEnd(top: 5, end: 5),
+              animationType: BadgeAnimationType.slide,
+              badgeContent: Text(value.getCartItems.length.toString()),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, CartScreen.routeName);
+                },
+                icon: Icon(
+                  FeatherIcons.shoppingCart,
+                  color: Colors.purple[900],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          )
         ],
       ),
       body: Stack(
@@ -103,10 +132,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         padding: sidePadding,
                         child: Text(
                           'US \$${product.price}',
-                          style: TextStyle(
-                              color: theme.disabledColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500),
+                          style: TextStyle(color: theme.disabledColor, fontSize: 18, fontWeight: FontWeight.w500),
                         ),
                       ),
                       SizedBox(height: 10.0),
@@ -120,10 +146,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         padding: sidePadding,
                         child: Text(
                           product.description,
-                          style: TextStyle(
-                              color: theme.disabledColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500),
+                          style: TextStyle(color: theme.disabledColor, fontSize: 18, fontWeight: FontWeight.w500),
                         ),
                       ),
                       SizedBox(height: 10.0),
@@ -135,8 +158,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       _details('Brand', product.brand),
                       _details('Quantity', '${product.quantity} Left'),
                       _details('Category', product.productCategoryName),
-                      _details('Popularity',
-                          product.isPopular ? "Popular" : "Not Popular"),
+                      _details('Popularity', product.isPopular ? "Popular" : "Not Popular"),
                       Divider(
                         height: 1,
                         thickness: 1,
@@ -154,8 +176,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               'No reviews yet',
                               style: TextStyle(
                                   wordSpacing: 2.0,
-                                  color:
-                                      theme.textSelectionTheme.selectionColor,
+                                  color: theme.textSelectionTheme.selectionColor,
                                   fontSize: 21,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -222,15 +243,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                           BeveledRectangleBorder(),
                         ),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        backgroundColor: MaterialStateProperty.all(
-                            Colors.redAccent.shade400),
+                        backgroundColor: cartAdded
+                            ? MaterialStateProperty.all(Colors.grey)
+                            : MaterialStateProperty.all(Colors.redAccent.shade400),
                       ),
-                      onPressed: () {},
+                      onPressed: cartAdded
+                          ? null
+                          : () {
+                              cartProvider.addCartItems(product);
+                            },
                       child: Container(
                         alignment: Alignment.center,
                         height: 50,
                         child: Text(
-                          'Add To Cart'.toUpperCase(),
+                          cartAdded ? 'Added To Cart'.toUpperCase() : 'Add To Cart'.toUpperCase(),
                           style: TextStyle(fontSize: 16, color: Colors.white),
                         ),
                       ),
@@ -244,8 +270,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           BeveledRectangleBorder(),
                         ),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.white),
+                        backgroundColor: MaterialStateProperty.all(Colors.white),
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, CartScreen.routeName);
@@ -257,8 +282,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             children: [
                               Text(
                                 'Buy Now'.toUpperCase(),
-                                style: TextStyle(
-                                    fontSize: 16, color: Colors.black),
+                                style: TextStyle(fontSize: 16, color: Colors.black),
                               ),
                               SizedBox(
                                 width: 5,
@@ -274,19 +298,25 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Expanded(
                     flex: 1,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        favsProvider.addOrRemoveFavsItems(product);
+                      },
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(
                           BeveledRectangleBorder(),
                         ),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        backgroundColor:
-                            MaterialStateProperty.all(theme.disabledColor),
+                        backgroundColor: MaterialStateProperty.all(theme.disabledColor),
                       ),
                       child: Container(
                         height: 50,
                         alignment: Alignment.center,
-                        child: Icon(Icons.favorite_border_outlined),
+                        child: favsAdded
+                            ? Icon(
+                                Icons.favorite,
+                                color: Colors.red,
+                              )
+                            : Icon(Icons.favorite_border_outlined),
                       ),
                     ),
                   ),
@@ -297,8 +327,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
   }
 
-  IconButton customIconButton(
-      {required Function() onPressed, required IconData icon}) {
+  IconButton customIconButton({required Function() onPressed, required IconData icon}) {
     return IconButton(
       splashRadius: 20,
       onPressed: onPressed,
@@ -318,20 +347,14 @@ class _ProductDetailsState extends State<ProductDetails> {
         children: <Widget>[
           Text(
             "$title:",
-            style: TextStyle(
-                color: theme.textSelectionTheme.selectionColor,
-                fontSize: 20,
-                fontWeight: FontWeight.w600),
+            style: TextStyle(color: theme.textSelectionTheme.selectionColor, fontSize: 20, fontWeight: FontWeight.w600),
           ),
           SizedBox(
             width: 4.0,
           ),
           Text(
             detail,
-            style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: theme.disabledColor),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: theme.disabledColor),
           )
         ],
       ),

@@ -1,4 +1,3 @@
-import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'product_details.dart';
 import '../models/product_model.dart';
 
@@ -13,13 +12,11 @@ class BrandsRailWidget extends StatelessWidget {
     final ProductModel product = Provider.of<ProductModel>(context);
     return InkWell(
       onTap: () {
-        Navigator.of(context)
-            .pushNamed(ProductDetails.routeName, arguments: product);
+        Navigator.of(context).pushNamed(ProductDetails.routeName, arguments: product);
       },
       child: Container(
           margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 24.0),
-          constraints: BoxConstraints(
-              minHeight: 150, maxHeight: 180, minWidth: double.infinity),
+          constraints: BoxConstraints(minHeight: 150, maxHeight: 180, minWidth: double.infinity),
           child: Row(
             children: <Widget>[
               Expanded(
@@ -27,12 +24,7 @@ class BrandsRailWidget extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Theme.of(context).backgroundColor,
                     borderRadius: BorderRadius.circular(16.0),
-                    boxShadow: [
-                      BoxShadow(
-                          offset: Offset(5.0, 5.0),
-                          color: Colors.grey,
-                          blurRadius: 2.0)
-                    ],
+                    boxShadow: [BoxShadow(offset: Offset(5.0, 5.0), color: Colors.grey, blurRadius: 2.0)],
                     image: DecorationImage(
                       fit: BoxFit.contain,
                       image: NetworkImage(product.imageUrl),
@@ -42,35 +34,25 @@ class BrandsRailWidget extends StatelessWidget {
               ),
               FittedBox(
                 child: Container(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0),
+                  padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 12.0),
                   height: 160,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(16.0),
-                        bottomRight: Radius.circular(16.0)),
+                    borderRadius:
+                        BorderRadius.only(topRight: Radius.circular(16.0), bottomRight: Radius.circular(16.0)),
                     color: Theme.of(context).backgroundColor,
-                    boxShadow: [
-                      BoxShadow(
-                          offset: Offset(5.0, 5.0),
-                          color: Colors.grey,
-                          blurRadius: 2.0)
-                    ],
+                    boxShadow: [BoxShadow(offset: Offset(5.0, 5.0), color: Colors.grey, blurRadius: 2.0)],
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        constraints:
-                            BoxConstraints(maxWidth: 120, minWidth: 90),
-                        child: AutoSizeText(
+                        constraints: BoxConstraints(maxWidth: 120, minWidth: 90),
+                        child: Text(
                           product.title,
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            color: Theme.of(context)
-                                .textSelectionTheme
-                                .selectionColor,
+                            color: Theme.of(context).textSelectionTheme.selectionColor,
                             fontWeight: FontWeight.w700,
                           ),
                         ),

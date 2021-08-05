@@ -41,9 +41,7 @@ class CartEmpty extends StatelessWidget {
           'Looks Like You didn\'t \nadd anything to your card yet',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: darkTheme
-                ? Theme.of(context).disabledColor
-                : ColorsConst.subTitle,
+            color: darkTheme ? Theme.of(context).disabledColor : ColorsConst.subTitle,
             fontWeight: FontWeight.w600,
             fontSize: 26.0,
           ),
@@ -59,8 +57,7 @@ class CartEmpty extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(Colors.redAccent),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    side: BorderSide(color: Colors.red)),
+                    borderRadius: BorderRadius.circular(12.0), side: BorderSide(color: Colors.red)),
               ),
             ),
             onPressed: () {},

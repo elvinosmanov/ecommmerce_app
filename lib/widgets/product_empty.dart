@@ -53,9 +53,7 @@ class ProductEmpty extends StatelessWidget {
           'Looks Like Seller didn\'t \nadd anything in this category yet',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: darkTheme
-                ? Theme.of(context).disabledColor
-                : ColorsConst.subTitle,
+            color: darkTheme ? Theme.of(context).disabledColor : ColorsConst.subTitle,
             fontWeight: FontWeight.w600,
             fontSize: 26.0,
           ),

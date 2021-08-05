@@ -1,4 +1,3 @@
-import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import '../screens/feed_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -46,27 +45,31 @@ class _CategoryState extends State<Category> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, FeedScreen.routeName,
-            arguments: categories[widget.index]["categoryName"]);
+        Navigator.pushNamed(context, FeedScreen.routeName, arguments: categories[widget.index]["categoryName"]);
       },
       child: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
+              color: Colors.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0),
               ),
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage(
-                  categories[widget.index]["categoryImagePath"].toString(),
-                ),
-              ),
+              // image: DecorationImage(
+              //   fit: BoxFit.contain,
+              //   image: AssetImage(
+              //     categories[widget.index]["categoryImagePath"].toString(),
+              //   ),
+              // ),
             ),
             margin: EdgeInsets.symmetric(horizontal: 10.0),
             width: 150.0,
             height: 150.0,
+            child: Image.asset(
+              categories[widget.index]["categoryImagePath"].toString(),
+              fit: BoxFit.contain,
+            ),
           ),
           Positioned(
             bottom: 0,
@@ -75,7 +78,7 @@ class _CategoryState extends State<Category> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
               color: Theme.of(context).backgroundColor,
-              child: AutoSizeText(
+              child: Text(
                 categories[widget.index]['categoryName'].toString(),
                 maxLines: 1,
                 style: TextStyle(
