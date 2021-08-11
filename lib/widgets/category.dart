@@ -1,4 +1,5 @@
-import '../screens/feed_screen.dart';
+import '../modules/feed/feed_screen.dart';
+
 import 'package:flutter/material.dart';
 
 class Category extends StatefulWidget {

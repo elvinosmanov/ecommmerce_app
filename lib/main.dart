@@ -1,23 +1,24 @@
-import 'package:ecommmerce_app/provider/favs_provider.dart';
-import 'package:ecommmerce_app/widgets/feeds_dialog.dart';
+import 'modules/auth/login_screen.dart';
+import 'modules/cart/cart_screen.dart';
+import 'modules/feed/widgets/feeds_dialog.dart';
+import 'modules/landing/landing_screen.dart';
+import 'modules/wishlist/wishlist_screen.dart';
 
-import 'provider/cart_provider.dart';
+import 'modules/feed/feed_screen.dart';
+import 'modules/wishlist/provider/favs_provider.dart';
 
-import 'provider/products_provider.dart';
+import 'modules/cart/provider/cart_provider.dart';
 
-import 'inner_screens/product_details.dart';
+import 'modules/products/provider/products_provider.dart';
 
-import 'screens/cart/cart_screen.dart';
-import 'screens/feed_screen.dart';
-import 'screens/wishlist_screen.dart';
+import 'modules/products/product_details.dart';
 
-import 'inner_screens/brands_navigation_rail.dart';
+import 'modules/brands/brands_navigation_rail.dart';
 
 import 'constants/theme_data.dart';
-import 'provider/dark_theme_provider.dart';
+import 'config/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
 
-import 'screens/bottom_bar_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -64,8 +65,9 @@ class _MyAppState extends State<MyApp> {
               WishListScreen.routeName: (_) => WishListScreen(),
               ProductDetails.routeName: (_) => ProductDetails(),
               FeedsDialog.routeName: (_) => FeedsDialog(),
+              LoginScreen.routeName: (_) => LoginScreen(),
             },
-            home: BottomBarScreen(),
+            home: LandingScreen(),
           );
         },
       ),

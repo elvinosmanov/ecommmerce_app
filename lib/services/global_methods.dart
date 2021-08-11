@@ -1,5 +1,6 @@
-import '../constants/network_links.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/network_links.dart';
 
 class GlobalMethods {
   Future<void> showDialogg(String title, String content, Function() onPressed, BuildContext context) async {

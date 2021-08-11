@@ -31,9 +31,11 @@ dependencies:
   list_tile_switch: ^1.0.0
   provider: ^5.0.0
   shared_preferences: ^2.0.6
+  cached_network_image: ^3.1.0
   backdrop: ^0.6.1
   carousel_pro_nullsafety: ^1.0.2
   flutter_swiper_null_safety: ^1.0.2
+  wave: ^0.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
